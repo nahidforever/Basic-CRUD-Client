@@ -1,4 +1,6 @@
 import { Button, Table } from "@heroui/react";
+import { DeleteModal } from "./DeleteModal";
+import Link from "next/link";
 
 export function ProductsTable({ products }) {
   return (
@@ -18,8 +20,10 @@ export function ProductsTable({ products }) {
                 <Table.Cell>{product.price}</Table.Cell>
                 <Table.Cell>{product.stock}</Table.Cell>
                 <Table.Cell>
-                  <Button className="mr-3">Edit</Button>
-                  <Button variant="danger">Delete</Button>
+                  <Link href={`/products/${product._id}/edit`}>
+                    <Button className="mr-3">Edit</Button>
+                  </Link>
+                  <DeleteModal productId={product._id}></DeleteModal>
                 </Table.Cell>
               </Table.Row>
             ))}
